@@ -60,17 +60,18 @@ echo -e "${green}你选择了安装V2bX${plain}"
         fi
         # 下载编译好的V2bX (2024/1/24更新为Xiao的修改版V2bX)
         if  [ $# == 0 ] ;then
-                last_version=$(curl -Ls "https://api.github.com/repos/wyx2685/V2bX/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-                if [[ ! -n "$last_version" ]]; then
-                    echo -e "${red}检测 V2bX 版本失败，默认采用2024年1月28日版本${plain}"
-                    last_version=v0.0.1-20240128
-                fi
-                echo -e "${green}检测到 V2bX 最新版本：${last_version}，开始安装${plain}"
-                wget -q -N --no-check-certificate -O '/etc/V2bX/V2bX-linux.zip' https://github.com/wyx2685/V2bX/releases/download/${last_version}/V2bX-linux-${arch}.zip
-                if [[ $? -ne 0 ]]; then
-                    echo -e "${red}下载 V2bX 失败，请确保你的服务器能够下载 Github 的文件${plain}"
-                    exit 1
-                fi
+                # last_version=$(curl -Ls "https://api.github.com/repos/wyx2685/V2bX/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+                # if [[ ! -n "$last_version" ]]; then
+                #     echo -e "${red}检测 V2bX 版本失败，默认采用2024年1月28日版本${plain}"
+                #     last_version=v0.0.1-20240128
+                # fi
+                # echo -e "${green}检测到 V2bX 最新版本：${last_version}，开始安装${plain}"
+                wget -q -N --no-check-certificate -O '/etc/V2bX/V2bX-linux.zip' https://github.com/wyx2685/V2bX/releases/download/v0.0.13/V2bX-linux-${arch}.zip
+		echo -e "获取指定V2bX v0.0.13"
+                # if [[ $? -ne 0 ]]; then
+                #     echo -e "${red}下载 V2bX 失败，请确保你的服务器能够下载 Github 的文件${plain}"
+                #     exit 1
+                # fi
             fi
  
                 unzip /etc/V2bX/V2bX-linux.zip -d /etc/V2bX
